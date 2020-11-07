@@ -1,0 +1,20 @@
+//include 'modules:model'
+//include 'modules:repository'
+//include 'modules:web'
+
+
+/**
+ * adds the directories inside 'modules' as module
+ * in the project.
+ *
+ * methods 'include' and 'project' are inside
+ * the Settings gradle interface.
+ *
+ * project returns a ProjectDescriptor and 'projectDir'
+ * is then called.
+ * */
+file('modules').eachDir { dir ->
+    println "$dir.name"
+    include dir.name
+    project(":${dir.name}").projectDir = dir
+}
